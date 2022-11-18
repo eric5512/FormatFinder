@@ -25,4 +25,14 @@ public class FormatTree {
             aux.addChildNodes(bytes, ext);
         }
     }
+
+    public String getExtension(List<Byte> bytes) throws Exception {
+        Node next = this.nodes.get(bytes.remove(0));
+
+        if (next == null) {
+            throw new Exception("Header not found");
+        }
+
+        return next.getExtension(bytes);
+    }
 }

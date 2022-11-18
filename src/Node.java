@@ -31,5 +31,13 @@ public class Node {
             
     }
 
+    public String getExtension(List<Byte> bytes) throws Exception {
+        Node next = this.childs.get(bytes.remove(0));
 
+        if (next == null) {
+            throw new Exception("Header not found");
+        }
+
+        return next.getExtension(bytes);
+    }
 }
